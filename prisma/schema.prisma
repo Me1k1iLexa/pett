@@ -10,6 +10,34 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
+  username  String   @unique
   password  String
   createdAt DateTime @default(now())
+  posts     Post[]
+  topics    Topic[]
+}
+
+model Topic {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  isClosed    Boolean  @default(false)
+  name        String
+  description String
+
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int
+
+  posts Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+
+  topic   Topic @relation(fields: [topicId], references: [id])
+  topicId Int
+
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int
 }
