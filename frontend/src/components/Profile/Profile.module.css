@@ -1,0 +1,7 @@
+.logOutButton{
+    background-color: var(--red-color);
+    text-transform: uppercase;
+}
+.logOutButton:hover{
+    background-color: var(--red-color-hover);
+}

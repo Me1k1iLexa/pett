@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import prisma from "../utils/prisma";
+import prisma from "../../utils/prisma";
 import { z } from "zod";
 
 const registerSchema = z.object({
