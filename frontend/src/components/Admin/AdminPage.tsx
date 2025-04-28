@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from './Admin.module.scss'
 
 type User = {
   id: number;
@@ -15,21 +16,33 @@ const AdminPage = () => {
       .then((data) => setUsers(data))
       .catch((err) => console.error(err));
   }, []);
+
   return (
-    <div>
-      <h1 className="title1">Список пользователей</h1>
-      {users.length === 0 ? (
-        <p className="title3">Пользователей пока нет</p>
-      ) : (
-        <ul className="mainUl">
-          {users.map((user) => (
-            <li className="mainLi" key={user.id}>
-              {user.email} —{new Date(user.createdAt).toLocaleString()}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <div className={styles.adminPage}>
+        <h1>Список пользователей</h1>
+        {users.length === 0 ? (
+            <p className={styles.noUsers}>Пользователей пока нет</p>
+        ) : (
+            <div className={styles.tableWrapper}>
+              <table>
+                <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Дата регистрации</th>
+                </tr>
+                </thead>
+                <tbody>
+                {users.map((user) => (
+                    <tr key={user.id}>
+                      <td>{user.email}</td>
+                      <td>{new Date(user.createdAt).toLocaleString()}</td>
+                    </tr>
+                ))}
+                </tbody>
+              </table>
+            </div>
+        )}
+      </div>
   );
 };
 

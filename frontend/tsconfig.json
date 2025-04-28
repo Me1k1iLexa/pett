@@ -4,5 +4,14 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@interface/*": ["types/*"]
+    }
+  }
 }

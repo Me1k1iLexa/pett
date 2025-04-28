@@ -1,0 +1,31 @@
+@use '../../styles/base/variables' as *;
+@use '../../styles/base/mixins' as *;
+
+.profilePage {
+  @include container;
+  padding-top: $spacing-xxl;
+  padding-bottom: $spacing-xxl;
+}
+
+.profileTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-lg;
+}
+
+.profileInfo {
+  margin-bottom: $spacing-lg;
+
+  p {
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-base;
+    color: $color-text-main;
+  }
+}
+
+.logoutButton {
+  @include buttonBase($color-danger, #fff, $color-danger-hover);
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 300px;
+}
