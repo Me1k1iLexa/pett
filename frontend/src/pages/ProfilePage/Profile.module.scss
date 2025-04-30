@@ -3,13 +3,15 @@
 
 .profilePage {
   @include container;
-  padding-top: $spacing-xxl;
-  padding-bottom: $spacing-xxl;
+  @include flexColumn;
+  padding: $spacing-xl;
+  margin: $spacing-xl auto $spacing-xl auto;
+  background-color: $color-card-bg;
+  border-radius: $radius-lg;
+  width:$container-quarter;
 }
 
 .profileTitle {
-  font-size: $font-size-xxl;
-  font-weight: $font-weight-bold;
   margin-bottom: $spacing-lg;
 }
 

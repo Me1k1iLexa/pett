@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { UserData } from "../../types/user.ts";
-import styles from "@components/Profile/Profile.module.scss";
+import styles from './Profile.module.scss'
 import axios from "axios";
+import {useAppDispatch} from "../../hooks/reduxHooks.ts";
+import {clearAuth} from "../../store/auth.ts";
 
-const Profile = () => {
+const ProfilePage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+    const dispatch = useAppDispatch();
   useEffect(() => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
@@ -29,7 +31,7 @@ const Profile = () => {
               },
             },
         );
-        console.log("User Data: ", response.data);
+
         setUser(response.data);
       } catch (err) {
         setError("Failed to fetch user data");
@@ -44,10 +46,11 @@ const Profile = () => {
   if (error) return <p>{error}</p>;
   if (!user) return <p>Пользователь не найден</p>;
 
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
+    const handleLogOut = () => {
+        localStorage.removeItem("token");
+        dispatch(clearAuth());
+        navigate("/");
+    };
 
   return (
       <div className={styles.profilePage}>
@@ -67,5 +70,5 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;
 

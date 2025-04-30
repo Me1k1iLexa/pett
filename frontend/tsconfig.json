@@ -1,4 +1,5 @@
 {
+  "include": ["src", "src/types"],
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
@@ -11,7 +12,9 @@
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
-      "@interface/*": ["types/*"]
+      "@interface/*": ["types/*"],
+      "@hooks/*": ["hooks/*"],
+      "@store/*": ["store/*"],
     }
   }
 }
